@@ -32,6 +32,7 @@ main {
   width: 100%;
   padding: 10px 20px;
   display: flex;
+  border-radius: 10px;
   justify-content: center;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
