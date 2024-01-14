@@ -8,10 +8,26 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="css/bootstrap.css">
-    <script src="js/bootstrap.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <!-- Añade tu script JavaScript -->
+    <script src="php/conexion.php"></script>
 
+    <script src="js/bootstrap.js"></script>
+    <script src="js/datos.js"></script>
+   
 </head>
 <body>
-    <h1>UTCMenu</h1>
+    <form>
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id"><br><br>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre"><br><br>
+        <label for="correo">Correo:</label>
+        <input type="text" id="correo" name="correo"><br><br>
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono"><br><br>
+        <button type="button" onclick="enviarDatos()">Ingresar</button>
+    </form>
+    
 </body>
 </html>

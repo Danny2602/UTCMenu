@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/adRestaunrante.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <script src="js/datosRestaurante.js"></script>
+  </head>
+  <body>
+    <!--NAvegador-->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <!-- Agrega el logo como imagen dentro del enlace de la marca -->
+      <a class="navbar-brand" href="#">
+        <img src="img/logo.png" alt="logo" height="40" />
+        <!-- Ajusta la ruta y el tamaño según tus necesidades -->
+      </a>
+
+      <!-- Resto del código del navbar -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="miDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Registrar
+            </a>
+            <!-- Menú desplegable para la opción "Registrar" -->
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Menus</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Restaurantes</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!--Formulario-->
+    <div class="form_wrapper">
+      <div class="form_container">
+        <div class="title_container">
+          <h2>Registrar Restaurante</h2>
+        </div>
+        <div class="row clearfix">
+          <div class="">
+            <form id="formulario">
+              <div class="input_field">
+                <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                <input
+                  type="text"
+                  name="nombre"
+                  placeholder="Nombre"
+                  required
+                />
+              </div>
+              <div class="input_field">
+                <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                <input
+                  type="text"
+                  name="ubicacion"
+                  placeholder="Ubicacion"
+                  required
+                />
+              </div>
+              <div class="input_field">
+                <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                <input
+                  type="text"
+                  name="descripcion"
+                  placeholder="Descripcion"
+                  required
+                />
+              </div>
+              <div class="input_field">
+                <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                <input
+                  type="text"
+                  name="horario"
+                  placeholder="horario"
+                  required
+                />
+              </div>
+              <div class="row clearfix">
+                <div class="col_half">
+                  <div class="input_field">
+                    <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                    <input type="text" name="usuario" placeholder="Usuario" />
+                  </div>
+                </div>
+                <div class="col_half">
+                  <div class="input_field">
+                    <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                    <input
+                      type="text"
+                      name="contrase"
+                      placeholder="contraseña"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <input
+                class="button"
+                type="submit"
+                value="Registrarse"
+                onclick="insertar()"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
