@@ -1,7 +1,5 @@
 <?php
 require_once('conexion.php');
-
-
 $usuario = $_POST['usuario'];
 $contra = $_POST['contra'];
 
