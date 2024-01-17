@@ -1,0 +1,36 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #6ec1f8;
+    margin: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  input {
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 8px 15px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  canvas {
+    max-width: 800px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  

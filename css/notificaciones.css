@@ -1,0 +1,71 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #439ac9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos para el encabezado */
+h1 {
+    text-align: center;
+    color: #000000;
+}
+
+h2 {
+    color: #333;
+}
+
+/* Estilos para el área de comentarios */
+#comment-section {
+    margin-top: 20px;
+}
+
+.comment {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+/* Estilos para el formulario de comentarios */
+#comment-form {
+    margin-top: 20px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+textarea, input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Agrega aquí estilos adicionales según tus preferencias */
+

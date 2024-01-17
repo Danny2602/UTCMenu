@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comentarios y Sugerencias</title>
+    <link rel="stylesheet" href="css/notificaciones.css" />
+    <style>
+        /* Estilos para la presentación */
+        #comment-section {
+            margin-top: 20px;
+        }
+
+        .comment {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <!-- Agrega el logo como imagen dentro del enlace de la marca -->
+        <a class="navbar-brand" href="#">
+          <img src="img/logo.png" alt="logo" height="40" />
+          <!-- Ajusta la ruta y el tamaño según tus necesidades -->
+        </a>
+    </nav>
+
+    <h1>Comentarios y Sugerencias</h1>
+
+    <div id="comment-section">
+        <!-- Aquí se mostrarán los comentarios -->
+    </div>
+
+    <h2>Dejar un Comentario o Sugerencia</h2>
+    <form id="comment-form">
+        <label for="comment">Comentario:</label>
+        <textarea id="comment" name="comment" rows="4" cols="50" required></textarea>
+        <br>
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <button type="button" onclick="submitComment()">Enviar Comentario</button>
+    </form>
+
+    <script>
+        function submitComment() {
+            // Aquí puedes enviar el comentario al servidor usando AJAX
+            // Puedes usar bibliotecas como jQuery o fetch API
+
+            // Ejemplo básico sin backend
+            const comment = document.getElementById('comment').value;
+            const name = document.getElementById('name').value;
+
+            // Simulación de enviar datos al servidor
+            alert(`Comentario enviado:\nNombre: ${name}\nComentario: ${comment}`);
+
+            // Aquí podrías hacer una solicitud AJAX para enviar datos al servidor
+            // y guardarlos en la base de datos
+        }
+    </script>
+</body>
+</html>

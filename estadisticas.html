@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estadísticas de Visualización de Menús</title>
+  <link rel="stylesheet" href="css/estadisticas.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    #contenedorGrafico {
+      margin: 20px auto; /* Centrar horizontalmente y dar un espacio superior e inferior de 20px */
+    }
+
+    canvas {
+      max-width: 500px;  /* Reducir el ancho máximo del canvas */
+      max-height: 500px; /* Establecer la altura máxima del canvas */
+    }
+  </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <!-- Agrega el logo como imagen dentro del enlace de la marca -->
+        <a class="navbar-brand" href="#">
+          <img src="img/logo.png" alt="logo" height="40" />
+          <!-- Ajusta la ruta y el tamaño según tus necesidades -->
+        </a>
+    </nav>
+
+  <h1>Estadísticas de Visualización de Menús</h1>
+
+  <!-- Filtros -->
+  <label for="fechaInicio">Fecha de Inicio:</label>
+  <input type="date" id="fechaInicio">
+  
+  <label for="fechaFin">Fecha de Fin:</label>
+  <input type="date" id="fechaFin">
+
+  <button onclick="aplicarFiltro()">Aplicar Filtro</button>
+
+  <!-- Contenedor del gráfico de barras ficticio -->
+  <div id="contenedorGrafico">
+    <canvas id="graficoBarras"></canvas>
+  </div>
+
+  <script>
+    // Datos ficticios para el ejemplo
+    const datosFicticios = {
+      restaurantes: ['Restaurante A', 'Restaurante B', 'Restaurante C'],
+      visualizaciones: [120, 80, 200]
+    };
+
+    // Configuración del gráfico de barras
+    const configBarras = {
+      type: 'bar',
+      data: {
+        labels: datosFicticios.restaurantes,
+        datasets: [{
+          label: 'Visualizaciones por Restaurante',
+          data: datosFicticios.visualizaciones,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.7)',
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 206, 86, 0.7)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    };
+
+    // Función para aplicar el filtro (simulada)
+    function aplicarFiltro() {
+      // Aquí puedes agregar la lógica para aplicar el filtro de fechas y actualizar las estadísticas
+      alert("Filtro aplicado");
+    }
+
+    // Crear el gráfico de barras
+    const ctxBarras = document.getElementById('graficoBarras').getContext('2d');
+    new Chart(ctxBarras, configBarras);
+  </script>
+
+</body>
+</html>
