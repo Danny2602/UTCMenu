@@ -17,8 +17,35 @@ function comparar() {
                     Usuario no existe
                 </div>
                 `;
-        } else {
+        }
+        if (data === "1") {
           window.location.href = "registrarRestaurante.html";
+        }
+        if (data === "CL") {
+          window.location.href = "verRestaurantes.html";
+        }
+      });
+  });
+}
+function insertarcliente() {
+  var formul = document.getElementById("registrar");
+  var respuesta = document.getElementById("respuesta");
+  formul.addEventListener("submit", function (e) {
+    e.preventDefault();
+    console.log("vas bien");
+    var datos = new FormData(formul);
+    console.log(datos.get("nombre"));
+    fetch("php/insert/insertarCliente.php", {
+      method: "POST",
+      body: datos,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data === false) {
+          console.log("datos ingresado maaaal");
+        } else {
+          window.location.href = "index.html";
+          console.log("datos ingresado");
         }
       });
   });

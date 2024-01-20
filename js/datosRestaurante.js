@@ -16,6 +16,7 @@ function insertar() {
           console.log("datos ingresado maaaal");
         } else {
           console.log("datos ingresado");
+          window.location.href = "registrarRestaurante.html";
         }
       });
   });

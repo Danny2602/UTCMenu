@@ -7,7 +7,10 @@ $sql = "SELECT * FROM miembros WHERE nom_mie = '$usuario' AND contra_mie = '$con
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    echo json_encode(true);
+    $fila = $result->fetch_assoc();
+    $dosPrimerosCaracteres = substr($fila['id_mie'], 0, 2);
+    echo json_encode($dosPrimerosCaracteres);
+   
 } else {
     echo json_encode(false);
 }
