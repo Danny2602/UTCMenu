@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('conexion.php');
 $usuario = $_POST['usuario'];
 $contra = $_POST['contra'];
@@ -8,9 +9,15 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     $fila = $result->fetch_assoc();
+    
     $dosPrimerosCaracteres = substr($fila['id_mie'], 0, 2);
+
+    $_SESSION['id'] = $fila['id_mie'];
+    
     echo json_encode($dosPrimerosCaracteres);
    
+
+
 } else {
     echo json_encode(false);
 }

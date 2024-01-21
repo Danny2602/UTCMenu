@@ -21,8 +21,11 @@ function comparar() {
         if (data === "1") {
           window.location.href = "registrarRestaurante.html";
         }
-        if (data === "CL") {
-          window.location.href = "verRestaurantes.html";
+        if (data === "US") {
+          window.location.href = "clienteVerRestaurantes.html";
+        }
+        if (data === "RE") {
+          window.location.href = "agregarMenu.html";
         }
       });
   });

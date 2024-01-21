@@ -1,12 +1,12 @@
-function insertar() {
-  var formul = document.getElementById("formulario");
+function insertarmenus() {
+  var formul = document.getElementById("menuFormulario");
   var respuesta = document.getElementById("respuesta");
   formul.addEventListener("submit", function (e) {
     e.preventDefault();
     console.log("vas bien");
     var datos = new FormData(formul);
     console.log(datos.get("nombre"));
-    fetch("php/insert.php", {
+    fetch("php/insert/insertarMenu.php", {
       method: "POST",
       body: datos,
     })
@@ -16,7 +16,7 @@ function insertar() {
           console.log("datos ingresado maaaal");
         } else {
           console.log("datos ingresado");
-          document.getElementById("formulario").reset();
+          document.getElementById("menuFormulario").reset();
         }
       });
   });
