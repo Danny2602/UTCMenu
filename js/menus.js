@@ -96,3 +96,26 @@ function actualizar() {
       });
   });
 }
+function eliminar() {
+  var formul = document.getElementById("actualizarDatos");
+  var respuesta = document.getElementById("respuesta");
+  formul.addEventListener("submit", function (e) {
+    e.preventDefault();
+    console.log("vas bien");
+    var datos = new FormData(formul);
+    console.log(datos.get("menu"));
+    fetch("php/delete/deleteMenu.php", {
+      method: "POST",
+      body: datos,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data === false) {
+          console.log("datos mal eliminados");
+        } else {
+          console.log("datos eliminados");
+          window.location.href = "gestionarMenu.html";
+        }
+      });
+  });
+}
