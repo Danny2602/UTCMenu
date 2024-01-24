@@ -5,7 +5,7 @@ require_once('conexion.php');
 
 $id = $_SESSION['id'];
 
-$miDatoRecibido = $_GET['dato'];
+
 $nombre = $_POST['nombre'];
 $descripcion = $_POST['descripcion'];
 $precio= $_POST['precio'];
