@@ -235,7 +235,7 @@ nav div.show {
   TASTEFUL RECIPES SECTION
 */
 .bread-background {
-background-color: rgba(11, 115, 167, 0.561);
+background-color: rgba(158, 181, 192, 0.561);
   background-size: cover;
   background-attachment: fixed;
   height: 500px;
@@ -261,7 +261,7 @@ background-color: rgba(11, 115, 167, 0.561);
   THE PERFECT BLEND SECTION
 */
 .cake-background {
-  background: black;
+  background: rgba(135, 192, 214, 0.442);
   background-size: cover;
   background-attachment: fixed;
   height: 500px;
@@ -328,7 +328,7 @@ footer .restaurant-info {
   align-items: center;
 }
 footer .copyright {
-  background: #232323;
+  background: #1f1f1f;
   color: #969696;
   font-size: 14px;
   letter-spacing: 1px;
