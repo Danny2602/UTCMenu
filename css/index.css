@@ -33,7 +33,7 @@ ul {
 */
 header {
   min-height: 100vh;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent), url("http://zigis.com.au/wp-content/uploads/2014/05/holiday2013_front.jpg") no-repeat center center;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent), url("/img/fondo.png") no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   display: flex;
@@ -44,6 +44,7 @@ header {
   /*
     CENTER HEADER TEXT
   */
+  
 }
 header nav {
   padding: 15px 35px;
@@ -168,7 +169,7 @@ nav div.show {
 */
 .custom-font {
   font-family: "Alex Brush", cursive;
-  color: #be8040;
+  color: #505d60;
   font-size: 75px;
   line-height: 0;
 }
@@ -208,10 +209,10 @@ nav div.show {
   align-items: center;
 }
 .add-flex .stuffed-cherries {
-  background: url("https://s-media-cache-ak0.pinimg.com/736x/61/b1/98/61b19844448b2bad5c78e9a2c6347986.jpg") no-repeat center center;
+  background: url("/img/utc.jpg") no-repeat center center;
   background-size: cover;
-  height: 315px;
-  width: 320px;
+  height: 330px;
+  width: 500px;
 }
 
 .center-h1 {
@@ -234,7 +235,7 @@ nav div.show {
   TASTEFUL RECIPES SECTION
 */
 .bread-background {
-  background: black url("http://www.performerprosites.com/development/clients/showpalace/wp-content/uploads/2014/05/tasteful-recipies-dinner-theatre.jpg") no-repeat center center;
+background-color: rgba(11, 115, 167, 0.561);
   background-size: cover;
   background-attachment: fixed;
   height: 500px;
@@ -252,14 +253,15 @@ nav div.show {
   grid-gap: 10px;
 }
 .menu-images img {
-  width: 100%;
+  width: 90%;
+  height: 90%;
 }
 
 /*
   THE PERFECT BLEND SECTION
 */
 .cake-background {
-  background: black url("http://www.rustiquerichmond.co.uk/wp-content/uploads/2014/06/desert.jpg") no-repeat center center;
+  background: black;
   background-size: cover;
   background-attachment: fixed;
   height: 500px;
