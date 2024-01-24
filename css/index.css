@@ -160,7 +160,16 @@ nav div.show {
   transform: scale(1);
   opacity: 1;
 }
-
+.iniciar button{
+  font-size: 30px;
+  padding: 10px 20px;
+  margin-top: 50px;
+  border: 2px solid #969696;
+  color: aliceblue;
+  font-family: "Overpass Mono";
+  justify-content: center;
+  letter-spacing: 3px;
+}
 /*
   SECTIONS
 */
