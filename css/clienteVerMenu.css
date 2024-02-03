@@ -3,30 +3,90 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-}
-.menu-item {
-    border: 1px solid #ddd;
-    margin: 10px;
-    padding: 15px;
-    padding-left: 100px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
-button {
-    padding: 8px 12px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
-h1 {
+/*Titulo*/
+h2{
+    text-align: center;
+    margin: 40px;
+}
+h1{
     text-align: center;
 }
-
-img {
+.navbar img {
     height: 50px;
+}
+/*Contenido primera fila*/
+.col-3{
+    align-items: center;/*Alinar horizontalmente*/
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /*Alinear verticalmente*/
+    height: auto;
+}
+.col-3 img{
+    display: flex;
+    max-width: 70%;
+    max-height: 70%;
+    justify-content: center;
+    float: left;
+}
+/*Contenido de la segunda fila*/
+.col-9{
+    align-items: center;/*Alinar horizontalmente*/
+    margin: 0;
+    padding: 20px;
+    justify-content: center; /*Alinear verticalmente*/
+    height: auto;
+}
+/*Tabla*/
+.tabla{
+    width: 90%; /* Ajusta el ancho de la tabla según tus necesidades */
+    margin-top: 10px;
+    border: 2px solid #000;
+    margin-left: auto; /* Centra la tabla horizontalmente */
+    margin-right: auto; /* Centra la tabla horizontalmente */
+    margin-bottom: 50px;    
+}
+.cabeza th{
+    color: rgb(255, 255, 255);
+    background-color: #3b87df;
+}
+.tabla th, .tabla td {
+    text-align: center; /* Centra el texto en las celdas */
+    padding: 10px;
+    border: 1px solid #ddd; /* Borde para las celdas */
+}
+/*Agregar Comentario */
+.comentario{
+    margin: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    padding-top: 30px;
+    padding-left: 30px;
+}
+.comentario label{
+    margin: 20px;
+
+}
+/*Ver Comentario*/
+.comentario1{  
+    margin: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    padding-top: 30px;
+}
+.comentario1 label{
+    margin: 5px;
+    padding-left: 30px;
+}
+
+#mensaje {
+    color: red;
+}
+#texto {
+    width: 90%;
+    transition: height 0.4s; /* Agrega una transición suave al cambio de altura */
+    overflow-y: hidden; /* Oculta la barra de desplazamiento vertical */
 }

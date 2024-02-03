@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MENU</title>
-    <link rel="stylesheet" href="verMenu.html" />
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/clienteVerMenu.css" />
     <script src="js/menu.js"></script>
@@ -13,57 +12,119 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <!-- Agrega el logo como imagen dentro del enlace de la marca -->
       <a class="navbar-brand" href="#">
-        <img src="img/logo.png" alt="logo" height="40" />
+        <img src="img/logo.png" alt="logo"/>
         <!-- Ajusta la ruta y el tamaño según tus necesidades -->
       </a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Salir</a>
+        </li>
+      </ul>
     </nav>
-    <h1>MENU</h1>
-    <div class="menu-item">
-      <img src="img/com1.jpg" alt="Fotografía del platillo" class="menu-img" />
-      <div class="menu-content">
-        <h2>Nombre del Platillo</h2>
-        <p>Precio: $10.99</p>
-        <button onclick="location.href='notificaciones.html'">
-          Agregar Comentario
-        </button>
+
+    <h2>INFORMACION DE RESTAURANTE</h2>
+     
+    <div class="container-fluid">
+      <div class="row">
+          <div class="col-3">
+            <img src="/img/fondo.png" alt="">
+          </div>
+          <div class="col-9">
+            <label for="">NOMBRE DE RESTAURANTE: </label><br>
+            <label for="">El veci</label><br><br>
+            <label for="">UBICACION:</label><br>
+            <label for="">Latacunga</label><br><br>
+            <label for="">DESCRIPCION</label><br>
+            <label for="">Descripcion del restaurante xd</label><br><br>
+            <label for="">HORARIO</label><br>
+            <label for="">8:00 a 9:00</label>
+          </div>
       </div>
     </div>
-    <div class="menu-item">
-      <img src="ruta_de_la_imagen.jpg" alt="Fotografía del platillo" />
-      <h2>Nombre del Platillo</h2>
-      <p>Precio: $10.99</p>
-      <button onclick="location.href='notificaciones.html'">
-        Agregar Comentario
-      </button>
-    </div>
-    <div class="menu-item">
-      <img src="ruta_de_la_imagen.jpg" alt="Fotografía del platillo" />
-      <h2>Nombre del Platillo</h2>
-      <p>Precio: $10.99</p>
-      <button onclick="location.href='notificaciones.html'">
-        Agregar Comentario
-      </button>
-    </div>
-    <div class="menu-item">
-      <img src="ruta_de_la_imagen.jpg" alt="Fotografía del platillo" />
-      <h2>Nombre del Platillo</h2>
-      <p>Precio: $10.99</p>
-      <button onclick="location.href='notificaciones.html'">
-        Agregar Comentario
-      </button>
-    </div>
-    <div class="menu-item">
-      <img src="ruta_de_la_imagen.jpg" alt="Fotografía del platillo" />
-      <h2>Nombre del Platillo</h2>
-      <p>Precio: $10.99</p>
-      <button onclick="mostrarComentarios()">Agregar Comentario</button>
-    </div>
-    <div class="menu-item">
-      <img src="ruta_de_la_imagen.jpg" alt="Fotografía del platillo" />
-      <h2>Nombre del Platillo</h2>
-      <p>Precio: $10.99</p>
-      <button onclick="mostrarComentarios()">Agregar Comentario</button>
-    </div>
-    <script src="js/menu.js"></script>
+    <!-- Seccion de tabla de menu -->
+    <section>
+      <h1 style="margin: 30px;">MENU</h1>
+      <div>
+        <table class="tabla">
+          <tr class="cabeza">
+            <th>Nombre de platillo</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Estado</th>
+            <th>Hora del menu</th>
+          </tr>
+          <tr>
+            <th>Arroz</th>
+            <th>Arroz</th>
+            <th>1.50</th>
+            <th>Activo</th>
+            <th>12:30</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+      </table>    
+      </div>
+    </section>
+    <hr>
+    <!-- Seccion para agregar comentario -->
+    <section class="comentario" style="box-shadow:1px 1px 5px rgba(0,0,0.2,0.4);" >
+      <label for="">Comentario</label>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-1">
+            <button>ENVIAR</button>
+          </div>
+          <div class="col-11">
+            <textarea id="texto" rows="1" oninput="ajustarTamaño(event), actualizarContador()"></textarea>
+            <p id="mensaje">Límite de palabras: 10</p>
+          </div>          
+        </div>
+      </div>
+    </section>
+    <section class="comentario1" style="box-shadow:1px 1px 5px rgba(0,0,0.2,0.4);">
+      <label for="">Alan Medina XD</label>
+      <label for="">23:00 Lun</label><br>
+      <label for="" class="com" style="width: 90%; height: 90px;">Esta sera el area de comentario</label>
+
+    </section>
+    <!-- Funcion para medir el limite de palabras -->
+    <script>
+      function actualizarContador() {
+          var inputTexto = document.getElementById("texto");
+          var mensaje = document.getElementById("mensaje");
+          
+          // Obtener el contenido del input y dividirlo en palabras
+          var palabras = inputTexto.value.split(/\s+/);
+          
+          // Establecer el límite de palabras
+          var limitePalabras = 10;
+          
+          // Actualizar el mensaje
+          mensaje.textContent = "Palabras escritas: " + palabras.length + "/" + limitePalabras;
+          
+          // Si se supera el límite, cambiar el color del mensaje
+          if (palabras.length > limitePalabras) {
+              mensaje.style.color = "red";
+          } else {
+              mensaje.style.color = "black";
+          }
+      }
+      function ajustarTamaño(event) {
+            var inputTexto = document.getElementById("texto");
+
+            // Ajusta el número de filas basándose en el contenido del textarea
+            inputTexto.setAttribute("rows", inputTexto.value.split('\n').length);
+
+            // Si se presiona Enter, incrementa el número de filas
+            if (event.key === "Enter") {
+                inputTexto.setAttribute("rows", parseInt(inputTexto.getAttribute("rows")) + 1);
+            }
+      }
+    </script>
   </body>
 </html>
