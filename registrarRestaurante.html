@@ -21,7 +21,12 @@
     <link rel="stylesheet" href="css/adRestaunrante.css" />
     <script src="js/bootstrap.js"></script>
   </head>
-
+  <style>
+    #preview-image {
+      max-width: 80px;
+      margin-top: 10px;
+    }
+  </style>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">UTCMenu</a>
@@ -46,6 +51,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="listaRestaurantes.html">Restaurante</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gestionarRestaurante.html">Gestionar</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -73,6 +81,31 @@
                   required
                 />
               </div>
+
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="file-input" class="btn btn-primary"
+                      >Seleccionar Imagen</label
+                    >
+                    <input
+                      type="file"
+                      id="file-input"
+                      name="imagen"
+                      accept=".jpg, .png"
+                      style="display: none"
+                    />
+
+                    <img
+                      id="preview-image"
+                      alt="Vista previa de la imagen"
+                      style="display: none"
+                    />
+                  </div>
+                </div>
+                <p id="file-label"></p>
+              </div>
+
               <div class="input_field">
                 <span><i aria-hidden="true" class="fa fa-lock"></i></span>
                 <input
@@ -93,13 +126,41 @@
               </div>
               <div class="input_field">
                 <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                <input
-                  type="text"
-                  name="horario"
-                  placeholder="horario"
-                  required
-                />
               </div>
+              Horario
+              <div
+                class="row"
+                style="
+                  flex-direction: row;
+                  display: flex;
+                  align-items: center;
+                  align-content: center;
+                  margin-left: 30px;
+                "
+              >
+                <div class="col_3">
+                  <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                  <input
+                    type="time"
+                    name="horario1"
+                    placeholder="horario"
+                    oninput="validarHorarios()"
+                    required
+                  />
+                </div>
+                <div>Hasta</div>
+                <div class="col_3">
+                  <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                  <input
+                    type="time"
+                    name="horario2"
+                    placeholder="horario"
+                    required
+                    oninput="validarHorariosInverso()"
+                  />
+                </div>
+              </div>
+
               <div class="row clearfix">
                 <div class="col_half">
                   <div class="input_field">
@@ -133,5 +194,25 @@
     </div>
 
     <script src="js/datosRestaurante.js"></script>
+
+    <script>
+      document
+        .getElementById("file-input")
+        .addEventListener("change", function () {
+          var fileInput = this;
+          var fileName = fileInput.value.split("\\").pop(); // Obtener solo el nombre del archivo
+          document.getElementById("file-label").innerText = fileName;
+
+          // Mostrar la vista previa de la imagen
+          var previewImage = document.getElementById("preview-image");
+          previewImage.style.display = "block";
+
+          var fileReader = new FileReader();
+          fileReader.onload = function (e) {
+            previewImage.src = e.target.result;
+          };
+          fileReader.readAsDataURL(fileInput.files[0]);
+        });
+    </script>
   </body>
 </html>

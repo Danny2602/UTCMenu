@@ -1,126 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="css/index.css">
-  <script src="php/conexion.php"></script>
-  <script src="js/bootstrap.js"></script>
-  <script src="js/datos.js"></script>
-</head>
-<body>
-  <header>
-    <nav id="inicio">
-      <h2><a href="#" id="logo"></a></h2>
-      <button class="nav-button fa fa-bars"></button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css" />
+
+    <script src="js/datos.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav id="inicio">
+        <h2><a href="#" id="logo"></a></h2>
+        <button class="nav-button fa fa-bars"></button>
+        <div>
+          <!--     <ul> -->
+          <ul>
+            <button class="exit-menu fa fa-times"></button>
+            <li><a href="#" class="active">BIENVENIDO</a></li>
+            <li><a href="#descubrir">DESCUBRIR</a></li>
+            <li><a href="#">CONTACTANOS</a></li>
+            <li><a href="#">INICIAR</a></li>
+          </ul>
+          <!--     </ul> -->
+        </div>
+      </nav>
+      <div class="center">
+        <h1 class="alex-brush">Welcome</h1>
+        <h2>Menu Utc</h2>
+        <span id="asterisk">*</span>
+        <p>Encuentra lo que quieres</p>
+        <div class="iniciar">
+          <button>BUSCALO</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="add-padding add-flex" id="descubrir">
+      <div class="center-text">
+        <h1 class="alex-brush"><span class="custom-font">Descubre</span></h1>
+        <p>
+          No que ha pasado que despues de un largo dia de estudio no sabes que
+          comer? Pues este sitio es para ti, aqui descubrirar y encontraras
+          recomendaciones de restaurantes y menus cerca de la Universidad
+          tecnica de cotopaxi
+        </p>
+      </div>
+      <div
+        class="stuffed-cherries"
+        data-aos="fade-left"
+        data-aos-delay="300"
+      ></div>
+    </section>
+
+    <section class="bread-background center-h1">
+      <h1 class="custom-h1 alex-brush">
+        <span class="custom-font">¿No lo encuentras?</span><br />Buscalo
+      </h1>
+    </section>
+
+    <section class="menu add-flex add-padding">
+      <div class="menu-images">
+        <img src="img/index1.jpg" data-aos="fade-down" data-aos-delay="300" />
+        <img src="img/index2.jpg" data-aos-delay="300" />
+        <img src="img/index3.jpeg" data-aos="fade-right" data-aos-delay="300" />
+        <img src="img/index4.jpg" data-aos="fade-up" data-aos-delay="300" />
+      </div>
+      <div class="center-text">
+        <h1><span class="custom-font alex-brush">Discover</span><br />MENU</h1>
+        <h2>*</h2>
+        <p>
+          En nuestro sitio podras encontrar lo que mas se te antoje de manera
+          rapida sin la necesidad de visitar cada sitio individualmente
+        </p>
+        <a href="#inicio">view the full menu</a>
+      </div>
+    </section>
+
+    <section class="cake-background center-h1">
+      <h1 class="custom-h1">
+        <span class="custom-font alex-brush">The perfect</span>
+      </h1>
+    </section>
+
+    <section class="add-flex reservation-section">
+      <div class="center-text add-padding">
+        <h1>
+          <span class="custom-font alex-brush">Culinary</span><br />DELIGHT
+        </h1>
+        <h2>*</h2>
+        <p>
+          Descubre nuevos lugares en los cuales degustar de tu almuerzo acorde a
+          tus gustos
+        </p>
+      </div>
       <div>
-        <!--     <ul> -->
-        <ul>
-          <button class="exit-menu fa fa-times"></button>
-          <li><a href="#" class="active">BIENVENIDO</a></li>
-          <li><a href="#descubrir">DESCUBRIR</a></li>
-          <li><a href="#">CONTACTANOS</a></li>
-          <li><a href="#">INICIAR</a></li>
-        </ul>
-        <!--     </ul> -->
+        <img
+          src="http://www.konoba-mirakul.com/wp-content/uploads/2015/03/kulinarstvo11.jpg"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        />
+        <img
+          src="http://www.konoba-mirakul.com/wp-content/uploads/2015/03/kulinarstvo21.jpg"
+          data-aos="fade-down"
+          data-aos-delay="300"
+        />
       </div>
-    </nav>
-    <div class="center" >
-      <h1 class="alex-brush">Welcome</h1>
-      <h2>Menu Utc</h2>
-      <span id="asterisk">*</span>
-      <p>Encuentra lo que quieres</p>
-      <div class="iniciar">
-        <button>BUSCALO</button>
-      </div>
-    </div>
-  </header>
-  
-  <section class="add-padding add-flex" id="descubrir">
-    <div class="center-text">
-      <h1 class="alex-brush"><span class="custom-font">Descubre</span></h1>
-      <p>No que ha pasado que despues de un largo dia de estudio no sabes que comer? Pues este sitio es para ti, aqui descubrirar y encontraras recomendaciones de restaurantes y menus cerca de la Universidad tecnica de cotopaxi</p>
-    </div>
-    <div class="stuffed-cherries" data-aos="fade-left" data-aos-delay="300">
-    </div>
-  </section>
-  
-  <section class="bread-background center-h1">
-    <h1 class="custom-h1 alex-brush"><span class="custom-font">¿No lo encuentras?</span><br />Buscalo</h1>
-  </section>
-  
-  <section class="menu add-flex add-padding">
-    <div class="menu-images">
-      <img src="img/index1.jpg" data-aos="fade-down" data-aos-delay="300" />
-      <img src="img/index2.jpg" data-aos-delay="300" />
-      <img src="img/index3.jpeg" data-aos="fade-right" data-aos-delay="300" />
-      <img src="img/index4.jpg" data-aos="fade-up" data-aos-delay="300" />
-    </div>
-    <div class="center-text">
-      <h1><span class="custom-font alex-brush">Discover</span><br />MENU</h1>
-      <h2>*</h2>
-      <p>En nuestro sitio podras encontrar lo que mas se te antoje de manera rapida sin la necesidad de visitar cada sitio individualmente</p>
-      <a href="#inicio">view the full menu</a>
-    </div>
-  </section>
-  
-  <section class="cake-background center-h1">
-    <h1 class="custom-h1"><span class="custom-font alex-brush">The perfect</span></h1>
-  </section>
-  
-  <section class="add-flex reservation-section">
-    <div class="center-text add-padding">
-      <h1><span class="custom-font alex-brush">Culinary</span><br />DELIGHT</h1>
-      <h2>*</h2>
-      <p>Descubre nuevos lugares en los cuales degustar de tu almuerzo acorde a tus gustos</p>
-    </div>
-    <div>
-      <img src="http://www.konoba-mirakul.com/wp-content/uploads/2015/03/kulinarstvo11.jpg" data-aos="fade-up" data-aos-delay="300" />
-      <img src="http://www.konoba-mirakul.com/wp-content/uploads/2015/03/kulinarstvo21.jpg" data-aos="fade-down" data-aos-delay="300" />
-    </div>
-  </section>
-  
-  <footer>
-    <button class="to-top"><i class="fa fa-chevron-up"></i>TOP</button>
-  
-    <div class="restaurant-info">
-  
-      <div class="locations">
-        <h4>UBICACION</h4>
-        <div class="location-1">
-          <h5>Sector Universitario<br />Elejido &#8212; UTC</h5>
-        </div>        
-      </div>
-      <!--locations end-->
-  
-      <div class="hours">
-        <h4>HOURS</h4>
-        <div class="weekdays">
-          <h5>Lunes a viernes<br />
-            5:30pm - 10:00pm
-          </h5>
+    </section>
+
+    <footer>
+      <button class="to-top"><i class="fa fa-chevron-up"></i>TOP</button>
+
+      <div class="restaurant-info">
+        <div class="locations">
+          <h4>UBICACION</h4>
+          <div class="location-1">
+            <h5>Sector Universitario<br />Elejido &#8212; UTC</h5>
+          </div>
         </div>
-        <!--weekdays end-->
-  
-        <div class="weekends">
-          <h5>Lunes a Sabado<br />
-            5:30pm - 11:00pm
-          </h5>
+        <!--locations end-->
+
+        <div class="hours">
+          <h4>HOURS</h4>
+          <div class="weekdays">
+            <h5>
+              Lunes a viernes<br />
+              5:30pm - 10:00pm
+            </h5>
+          </div>
+          <!--weekdays end-->
+
+          <div class="weekends">
+            <h5>
+              Lunes a Sabado<br />
+              5:30pm - 11:00pm
+            </h5>
+          </div>
         </div>
-  
+        <!--hours end-->
       </div>
-      <!--hours end-->
-  
-    </div>
-    <!--restaurant-info end-->
-  
-    <div class="copyright">
-      <p><small>Copyright 2014 &#169; UNIVERSIDAD TECNICA DE COTOPAXI <span>3S y el Luis</span> Team</small></p>
-      <p><small>Permissions and Copyright &#8226; Contact The Team</small></p>
-    </div>
-    <a href=""></a>
-  
-  </footer>
-</body>
+      <!--restaurant-info end-->
+
+      <div class="copyright">
+        <p>
+          <small
+            >Copyright 2014 &#169; UNIVERSIDAD TECNICA DE COTOPAXI
+            <span>3S y el Luis</span> Team</small
+          >
+        </p>
+        <p><small>Permissions and Copyright &#8226; Contact The Team</small></p>
+      </div>
+      <a href=""></a>
+    </footer>
+  </body>
 </html>
