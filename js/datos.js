@@ -47,7 +47,7 @@ function insertarcliente() {
         if (data === false) {
           console.log("datos ingresado maaaal");
         } else {
-          window.location.href = "index.html";
+          document.getElementById("registrar").reset();
           console.log("datos ingresado");
         }
       });

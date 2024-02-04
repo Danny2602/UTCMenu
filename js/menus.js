@@ -111,9 +111,9 @@ function eliminar() {
       .then((res) => res.json())
       .then((data) => {
         if (data === false) {
-          console.log("datos mal eliminados");
+          alert("datos mal eliminados");
         } else {
-          console.log("datos eliminados");
+          alert("datos eliminados");
           window.location.href = "gestionarMenu.html";
         }
       });

@@ -6,44 +6,50 @@
     <title>MENU</title>
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/clienteVerMenu.css" />
-    <script src="js/menu.js"></script>
+
+    <script src="js/cliente.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <!-- Agrega el logo como imagen dentro del enlace de la marca -->
       <a class="navbar-brand" href="#">
-        <img src="img/logo.png" alt="logo"/>
+        <img src="img/logo.png" alt="logo" />
         <!-- Ajusta la ruta y el tamaño según tus necesidades -->
       </a>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Salir</a>
+          <a class="nav-link" href="login.html">Salir</a>
         </li>
       </ul>
     </nav>
 
     <h2>INFORMACION DE RESTAURANTE</h2>
-     
+
     <div class="container-fluid">
       <div class="row">
-          <div class="col-3">
-            <img src="img/fondo.png" alt="" style="background-image: url(/img/fondo.png);">
-          </div>
-          <div class="col-9">
-            <label for="">NOMBRE DE RESTAURANTE: </label><br>
-            <label for="">El veci</label><br><br>
-            <label for="">UBICACION:</label><br>
-            <label for="">Latacunga</label><br><br>
-            <label for="">DESCRIPCION</label><br>
-            <label for="">Descripcion del restaurante xd</label><br><br>
-            <label for="">HORARIO</label><br>
-            <label for="">8:00 a 9:00</label>
-          </div>
+        <div class="col-3">
+          <img
+            src="img/fondo.png"
+            alt=""
+            style="background-image: url(img/fondo.png)"
+          />
+        </div>
+        <div class="col-9">
+          <label for="">NOMBRE DE RESTAURANTE: </label><br />
+          <label for="" id="nombre">El veci</label><br /><br />
+          <label for="">UBICACION:</label><br />
+          <label for="" id="ubicacion">Latacunga</label><br /><br />
+          <label for="">DESCRIPCION</label><br />
+          <label for="" id="descripcion">Descripcion del restaurante xd</label
+          ><br /><br />
+          <label for="">HORARIO</label><br />
+          <label for="" id="horario">8:00 a 9:00</label>
+        </div>
       </div>
     </div>
     <!-- Seccion de tabla de menu -->
     <section>
-      <h1 style="margin: 30px;">MENU</h1>
+      <h1 style="margin: 30px">MENU</h1>
       <div>
         <table class="tabla">
           <tr class="cabeza">
@@ -60,71 +66,85 @@
             <th>Activo</th>
             <th>12:30</th>
           </tr>
-          <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-      </table>    
+        </table>
       </div>
     </section>
-    <hr>
+    <hr />
     <!-- Seccion para agregar comentario -->
-    <h3 style="margin-left: 15%;">COMENTARIOS</h3>
-    <section class="comentario" style="box-shadow:1px 1px 5px rgba(0,0,0.2,0.4);" >
-      <label for="">Comentario</label>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-1">
-            <button>ENVIAR</button>
+    <h3 style="margin-left: 15%">COMENTARIOS</h3>
+    <section
+      class="comentario"
+      style="box-shadow: 1px 1px 5px rgba(0, 0, 0.2, 0.4)"
+    >
+      <form id="formulario">
+        <label for="">Comentar</label>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-1">
+              <button type="submit" onclick="cometarios()">ENVIAR</button>
+            </div>
+            <div class="col-11">
+              <textarea
+                name="descripcion"
+                id="texto"
+                rows="1"
+                oninput="ajustarTamaño(event), actualizarContador()"
+              ></textarea>
+              <p id="mensaje">Límite de palabras: 10</p>
+            </div>
           </div>
-          <div class="col-11">
-            <textarea id="texto" rows="1" oninput="ajustarTamaño(event), actualizarContador()"></textarea>
-            <p id="mensaje">Límite de palabras: 10</p>
-          </div>          
         </div>
-      </div>
+      </form>
     </section>
-    <section class="comentario1" style="box-shadow:1px 1px 5px rgba(0,0,0.2,0.4);">
-      <label for="">Alan Medina XD</label>
-      <label for="">23:00 Lun</label><br>
-      <label for="" class="com" style="width: 90%; height: 90px;">Esta sera el area de comentario</label>
 
+    <!--Comentarios -->
+    <h3>Cometarios:</h3>
+    <section
+      class="comentario1"
+      style="
+        box-shadow: 1px 1px 5px rgba(0, 0, 0.2, 0.4);
+        background-color: #251886;
+      "
+    >
+      <div id="contenedorComentarios"></div>
     </section>
+
     <!-- Funcion para medir el limite de palabras -->
     <script>
       function actualizarContador() {
-          var inputTexto = document.getElementById("texto");
-          var mensaje = document.getElementById("mensaje");
-          
-          // Obtener el contenido del input y dividirlo en palabras
-          var palabras = inputTexto.value.split(/\s+/);
-          
-          // Establecer el límite de palabras
-          var limitePalabras = 10;
-          
-          // Actualizar el mensaje
-          mensaje.textContent = "Palabras escritas: " + palabras.length + "/" + limitePalabras;
-          
-          // Si se supera el límite, cambiar el color del mensaje
-          if (palabras.length > limitePalabras) {
-              mensaje.style.color = "red";
-          } else {
-              mensaje.style.color = "black";
-          }
+        var inputTexto = document.getElementById("texto");
+        var mensaje = document.getElementById("mensaje");
+
+        // Obtener el contenido del input y dividirlo en palabras
+        var palabras = inputTexto.value.split(/\s+/);
+
+        // Establecer el límite de palabras
+        var limitePalabras = 10;
+
+        // Actualizar el mensaje
+        mensaje.textContent =
+          "Palabras escritas: " + palabras.length + "/" + limitePalabras;
+
+        // Si se supera el límite, cambiar el color del mensaje
+        if (palabras.length > limitePalabras) {
+          mensaje.style.color = "red";
+        } else {
+          mensaje.style.color = "black";
+        }
       }
       function ajustarTamaño(event) {
-            var inputTexto = document.getElementById("texto");
+        var inputTexto = document.getElementById("texto");
 
-            // Ajusta el número de filas basándose en el contenido del textarea
-            inputTexto.setAttribute("rows", inputTexto.value.split('\n').length);
+        // Ajusta el número de filas basándose en el contenido del textarea
+        inputTexto.setAttribute("rows", inputTexto.value.split("\n").length);
 
-            // Si se presiona Enter, incrementa el número de filas
-            if (event.key === "Enter") {
-                inputTexto.setAttribute("rows", parseInt(inputTexto.getAttribute("rows")) + 1);
-            }
+        // Si se presiona Enter, incrementa el número de filas
+        if (event.key === "Enter") {
+          inputTexto.setAttribute(
+            "rows",
+            parseInt(inputTexto.getAttribute("rows")) + 1
+          );
+        }
       }
     </script>
   </body>
