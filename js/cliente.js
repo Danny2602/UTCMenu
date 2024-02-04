@@ -115,7 +115,7 @@ function actualizarTabla(data) {
     "platodesc",
     "platoprec",
     "platoest",
-    "platoHora",
+    "platohora",
   ];
 
   // Verificar si data es un array y tiene al menos un elemento

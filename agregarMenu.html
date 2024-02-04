@@ -4,8 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel de Control del Propietario</title>
+    <script type="text/javascript" src="js/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="css/agregarMenu.css" />
     <script src="js/menus.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/clienteVerMenu.css" />
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -13,41 +27,83 @@
       <a class="navbar-brand" href="#">
         <img src="img/logo.png" alt="logo" height="40" />
         <ul>
-          <a href="gestionarMenu.html">Gestionar</a>
+          <a href="gestionarMenu.html" style="color: white">Gestionar</a>
         </ul>
         <ul>
-          <a href="login.html">Salir</a>
+          <a href="login.html" style="color: white">Salir</a>
         </ul>
       </a>
     </nav>
+    <section class="row container">
+      <div class="col-5">
+        <h1>Panel de Control del Propietario</h1>
 
-    <h1>Panel de Control del Propietario</h1>
+        <form id="menuFormulario" class="bg-primary">
+          <label for="nombrePlatillo" style="color: white; font-weight: bold"
+            >Nombre del Platillo:</label
+          >
+          <input name="nombre" type="text" id="nombrePlatillo" required />
 
-    <form id="menuFormulario">
-      <label for="nombrePlatillo">Nombre del Platillo:</label>
-      <input name="nombre" type="text" id="nombrePlatillo" required />
+          <label
+            for="descripcionPlatillo"
+            style="color: white; font-weight: bold"
+            >Descripción:</label
+          >
+          <textarea
+            name="descripcion"
+            id="descripcionPlatillo"
+            required
+          ></textarea>
 
-      <label for="descripcionPlatillo">Descripción:</label>
-      <textarea name="descripcion" id="descripcionPlatillo" required></textarea>
+          <label for="precioPlatillo" style="color: white; font-weight: bold"
+            >Precio:</label
+          >
+          <input
+            name="precio"
+            type="number"
+            id="precioPlatillo"
+            min="0"
+            step="0.01"
+            required
+          />
 
-      <label for="precioPlatillo">Precio:</label>
-      <input
-        name="precio"
-        type="number"
-        id="precioPlatillo"
-        min="0"
-        step="0.01"
-        required
-      />
+          <label for="estadoPlatillo" style="color: white; font-weight: bold"
+            >Estado</label
+          >
+          <select
+            class="form-select form-select-sm"
+            aria-label=".form-select-sm example"
+            name="estado"
+          >
+            <option value="Disponible">Disponible</option>
+            <option value="No Disponible">No Disponible</option>
+          </select>
+          <br />
+          <label for="horaMenu" style="color: white; font-weight: bold"
+            >Hora del Menú:</label
+          >
+          <input type="time" id="horaMenu" name="hora" />
 
-      <label for="estadoPlatillo">Estado</label>
-      <input name="estado" type="text" id="estadoPlatillo" required />
-
-      <label for="horaMenu">Hora del Menú:</label>
-      <input type="time" id="horaMenu" required />
-
-      <button type="submit" onclick="insertarmenus()">Agregar Menú</button>
-    </form>
+          <button type="submit" onclick="insertarmenus()">Agregar Menú</button>
+        </form>
+      </div>
+      <!--tablas-->
+      <div class="col-7 overflow container">
+        <h1 style="margin: 0px">MENU</h1>
+        <button onclick="generarPDF()">Generar PDF</button>
+        <div>
+          <table class="tabla" id="tablas" style="width: 100vh">
+            <tr class="cabeza">
+              <th>Nombre de platillo</th>
+              <th>Descripcion</th>
+              <th>Precio</th>
+              <th>Estado</th>
+              <th>Hora del menu</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
 
     <script>
       function agregarMenu() {

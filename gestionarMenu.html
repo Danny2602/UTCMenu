@@ -6,43 +6,77 @@
     <title>Interfaz para Propietarios</title>
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/menus.js"></script>
-
+    <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/gestionarMenu.css" />
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <!-- Agrega el logo como imagen dentro del enlace de la marca -->
-      <a class="navbar-brand" href="#">
-        <img src="img/logo.png" alt="logo" height="40" />
-        <!-- Ajusta la ruta y el tamaño según tus necesidades -->
+      <a class="" href="#">
+        <img src="img/logo.png" height="40" />
         <ul>
-          <a href="agregarMenu.html">Agregar</a>
+          <a href="agregarMenu.html" style="color: white">Ingresar</a>
         </ul>
         <ul>
-          <a href="login.html">Salir</a>
+          <a href="login.html" style="color: white">Salir</a>
         </ul>
       </a>
     </nav>
 
-    <h1>Panel de Control para Propietarios</h1>
+    <section class="row-12 content" style="margin: 20px">
+      <h1>Panel de Control para Propietarios</h1>
 
-    <h2>Actualizar Precios</h2>
-    <!-- En gestionarMenu.html -->
-    <form id="actualizarDatos">
-      <label for="menu">Seleccionar Platillo:</label>
-      <select id="menu" name="menu" onchange="datos() ">
-        <!-- Opciones de platillos se cargarían dinámicamente desde la base de datos -->
-        <option value="option" selected>---</option>
-        <!-- Agregar más opciones según sea necesario -->
-      </select>
+      <h2>Actualizar Precios</h2>
+      <!-- En gestionarMenu.html -->
+      <form id="actualizarDatos" class="bg-primary">
+        <label for="menu" style="color: white; font-weight: bold"
+          >Seleccionar Platillo:</label
+        >
+        <select id="menu" name="menu" onchange="datos() ">
+          <!-- Opciones de platillos se cargarían dinámicamente desde la base de datos -->
+          <option value="option" selected>---</option>
+          <!-- Agregar más opciones según sea necesario -->
+        </select>
+        <label for="newPrice" style="color: white; font-weight: bold"
+          >Nombre del Plato:</label
+        >
+        <input type="text" id="nombre" name="nombre" />
+        <label for="newPrice" style="color: white; font-weight: bold"
+          >Descripcion del Plato</label
+        >
+        <input type="text" id="descripcion" name="descripcion" />
 
-      <label for="newPrice">Nuevo Precio:</label>
-      <input type="number" id="precio" name="Precio" min="0" step="0.01" />
-      <label for="newPrice">Estado</label>
-      <input type="text" id="estado" name="Estado" />
+        <label for="newPrice" style="color: white; font-weight: bold"
+          >Nuevo Precio:</label
+        >
+        <input type="number" id="precio" name="Precio" min="0" step="0.01" />
 
-      <button type="submit" onclick="actualizar() ">Actualizar Precio</button>
-      <button type="submit" onclick="eliminar()">Eliminar Menu</button>
-    </form>
+        <label for="estadoPlatillo" style="color: white; font-weight: bold"
+          >Estado</label
+        >
+        <select
+          class="form-select form-select-sm"
+          aria-label=".form-select-sm example"
+          name="estado"
+          id="estado"
+        >
+          <option selected>----------</option>
+          <option value="Disponible">Disponible</option>
+          <option value="No Disponible">No Disponible</option>
+        </select>
+
+        <label for="horaMenu" style="color: white; font-weight: bold"
+          >Hora del Menú:</label
+        >
+        <input type="time" id="horaMenu" name="horaMenu" />
+
+        <button type="submit" onclick="actualizar() " class="btn btn-dark">
+          Actualizar Precio
+        </button>
+        <button type="submit" onclick="eliminar()" class="btn btn-danger">
+          Eliminar Menu
+        </button>
+      </form>
+    </section>
   </body>
 </html>
