@@ -21,9 +21,16 @@ function restaurantes() {
       if (Array.isArray(data) && data.length > 0) {
         console.log(data[0].nombre_res);
         console.log(data);
-        for (i = 0; i < data.length; i++) {
+
+        for (let i = 0; i < data.length; i++) {
           let elementoId = "nombre" + (i + 1);
+          let elementoImg = "preview-image" + (i + 1);
+
           document.getElementById(elementoId).innerText = data[i].nombre_res;
+
+          const imgPreview = document.getElementById(elementoImg);
+          imgPreview.src = "data:image/jpeg;base64," + data[i].imagen_res; // Ajusta el tipo de imagen según lo que almacenes en la base de datos
+          imgPreview.style.display = "block";
         }
       } else {
         console.error("Los datos no tienen la estructura esperada.");
@@ -73,6 +80,10 @@ function mostrarRestaurantes() {
         document.getElementById("ubicacion").innerText = data.ubi_res;
         document.getElementById("descripcion").innerText = data.desc_res;
         document.getElementById("horario").innerText = data.hora_res;
+        // Mostrar la imagen
+        const imgPreview = document.getElementById("preview-image");
+        imgPreview.src = "data:image/png;base64," + data.imagen_res; // Ajusta el tipo de imagen según lo que almacenes en la base de datos
+        imgPreview.style.display = "block";
       })
       .catch((error) => {
         console.error("Error al enviar datos:", error);
@@ -84,7 +95,7 @@ function mostrarMenu() {
   // Configurar los datos que se enviarán en el cuerpo de la solicitud
   var datos = new URLSearchParams();
   datos.append("restaurante", restaurante);
-
+  console.log("el dato es: ", restaurante);
   // Realizar la solicitud fetch utilizando el método POST
   fetch("php/select/selectTodosMenus.php", {
     method: "POST",
@@ -182,7 +193,7 @@ function mostrarComentarios() {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("datos obtenido restaurante: ", data);
+      console.log("datos obtenido comentarios: ", data);
       mostrarComentariosEnHTML(data);
     })
     .catch((error) => {
@@ -205,7 +216,7 @@ function mostrarComentariosEnHTML(comentarios) {
     nuevaSeccion.style.backgroundColor = "white";
 
     nuevaSeccion.innerHTML = `
-          <label for="" id="nombre">Usuario:${comentario.nom_usu}</label>
+          <label for="" id="nombre">Usuario:${comentario.nom_mie}</label>
           <label for="" id="fecha">Fecha:${comentario.fecha_com}</label><br />
           <label for="" id="fecha">Comentario: </label><br />
           <label for="" class="com" style="width: 90%; height: 90px" id="comentario">${comentario.desc_com}</label>

@@ -5,7 +5,8 @@ require_once('conexion.php');
 $id = $_SESSION['id'];
 $restaurante=$_POST['restaurante'];
 
-$sql = "select * from Menus inner join restaurantes on fkid_res=id_res where nombre_res='$restaurante';";
+
+$sql = "select platoNom,platodesc, platoprec,platoest,platohora from Menus inner join restaurantes on fkid_res=id_res where nombre_res='$restaurante';";
 $result = $conn->query($sql);
 
 $data = array();
@@ -17,6 +18,7 @@ if ($result->num_rows > 0) {
     }
 } else {
     // Si no hay datos, devolver un array vacío
+   
     $data = array();
 }
 

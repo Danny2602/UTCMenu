@@ -49,7 +49,7 @@ function selecionarRestaurante() {
 
 function datosRestaurante() {
   var sel = document.getElementById("restaurante").value;
-
+  console.log(sel);
   // Utilizar fetch para realizar la solicitud POST
   fetch("php/select/selectRes.php", {
     method: "POST",
@@ -61,15 +61,22 @@ function datosRestaurante() {
     .then((response) => response.json())
     .then((data) => {
       if (data) {
+        console.log(data);
         const horasSeparadas = data.hora_res.split(" hasta ");
         const dato1 = horasSeparadas[0];
         const dato2 = horasSeparadas[1];
+
         // Actualizar los campos de entrada con los datos recibidos
         document.getElementById("nombre").value = data.nombre_res;
         document.getElementById("ubicacion").value = data.ubi_res;
         document.getElementById("descripcion").value = data.desc_res;
         document.getElementById("horario1").value = dato1;
         document.getElementById("horario2").value = dato2;
+
+        // Mostrar la imagen
+        const imgPreview = document.getElementById("preview-image");
+        imgPreview.src = "data:image/png;base64," + data.imagen_res; // Ajusta el tipo de imagen según lo que almacenes en la base de datos
+        imgPreview.style.display = "block";
       } else {
         // Manejar el caso en que no haya datos
         console.log("No se encontraron datos para el menú seleccionado.");
@@ -79,6 +86,7 @@ function datosRestaurante() {
       console.error("Error:", error);
     });
 }
+
 function actualizar() {
   var formul = document.getElementById("actualizarDatos");
   var respuesta = document.getElementById("respuesta");
@@ -87,6 +95,12 @@ function actualizar() {
     console.log("vas bien");
     var datos = new FormData(formul);
     console.log(datos.get("restaurantes"));
+    var fileInput = document.getElementById("file-input");
+
+    // Verificar si se seleccionó un archivo
+    if (fileInput.files.length > 0) {
+      datos.append("imagen", fileInput.files[0]);
+    }
     fetch("php/update/updateRes.php", {
       method: "POST",
       body: datos,

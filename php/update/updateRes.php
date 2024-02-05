@@ -11,10 +11,11 @@ $descripcion = $_POST['descripcion'];
 $horario1 = $_POST['horario1'];
 $horario2 = $_POST['horario2'];
 $hora = $horario1 . ' hasta ' . $horario2;
+$imagen = $_FILES['imagen']['tmp_name'];
+$imagenContenido = addslashes(file_get_contents($imagen));
 
 
-
-$sql = "UPDATE restaurantes SET nombre_res='$nombre', ubi_res='$ubicacion', desc_res='$descripcion',hora_res='$hora' where nombre_res='$restaurante';";
+$sql = "UPDATE restaurantes SET nombre_res='$nombre', ubi_res='$ubicacion', desc_res='$descripcion',hora_res='$hora',imagen_res='$imagenContenido' where nombre_res='$restaurante';";
 
 
 if ($conn->query($sql) === TRUE) {
