@@ -9,7 +9,18 @@
     <script src="js/datos.js"></script>
   </head>
   <body>
-    <header>
+    <header
+      style="
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent),
+          url('img/fondo.png') no-repeat center center;
+        min-height: 100vh;
+
+        background-size: cover;
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+      "
+    >
       <nav id="inicio">
         <h2><a href="#" id="logo"></a></h2>
         <button class="nav-button fa fa-bars"></button>
@@ -19,7 +30,7 @@
             <button class="exit-menu fa fa-times"></button>
             <li><a href="#" class="active">BIENVENIDO</a></li>
             <li><a href="#descubrir">DESCUBRIR</a></li>
-            <li><a href="#">CONTACTANOS</a></li>
+            <li><a href="#contactanos">CONTACTANOS</a></li>
             <li><a href="login.html">INICIAR</a></li>
           </ul>
           <!--     </ul> -->
@@ -50,6 +61,12 @@
         class="stuffed-cherries"
         data-aos="fade-left"
         data-aos-delay="300"
+        style="
+          background: url('img/utc.jpg') no-repeat center center;
+          background-size: cover;
+          height: 330px;
+          width: 500px;
+        "
       ></div>
     </section>
 
@@ -73,7 +90,7 @@
           En nuestro sitio podras encontrar lo que mas se te antoje de manera
           rapida sin la necesidad de visitar cada sitio individualmente
         </p>
-        <a href="#inicio">view the full menu</a>
+        <a href="#inicio">Descubre Nuevos Lugares</a>
       </div>
     </section>
 
@@ -95,20 +112,12 @@
         </p>
       </div>
       <div>
-        <img
-          src="http://www.konoba-mirakul.com/wp-content/uploads/2015/03/kulinarstvo11.jpg"
-          data-aos="fade-up"
-          data-aos-delay="300"
-        />
-        <img
-          src="http://www.konoba-mirakul.com/wp-content/uploads/2015/03/kulinarstvo21.jpg"
-          data-aos="fade-down"
-          data-aos-delay="300"
-        />
+        <img src="img/index5.jpeg" data-aos="fade-up" data-aos-delay="300" />
+        <img src="img/index6.jpeg" data-aos="fade-down" data-aos-delay="300" />
       </div>
     </section>
 
-    <footer>
+    <footer id="contactanos">
       <button class="to-top"><i class="fa fa-chevron-up"></i>TOP</button>
 
       <div class="restaurant-info">
@@ -144,11 +153,16 @@
       <div class="copyright">
         <p>
           <small
-            >Copyright 2014 &#169; UNIVERSIDAD TECNICA DE COTOPAXI
-            <span>3S y el Luis</span> Team</small
+            >Copyright 2024 &#169; UNIVERSIDAD TECNICA DE COTOPAXI
+            <span>3S sin el Luis</span> Team</small
           >
         </p>
-        <p><small>Permissions and Copyright &#8226; Contact The Team</small></p>
+        <p>
+          <small
+            >Permissions and Copyright &#8226; Contact The Team:
+            danny.simba4520@utc.edu.ec</small
+          >
+        </p>
       </div>
       <a href=""></a>
     </footer>

@@ -32,13 +32,6 @@ ul {
   HEADER
 */
 header {
-  min-height: 100vh;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent),
-    url("/img//fondo.png") no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
-  display: flex;
-  flex-direction: column;
   /*
     NAV
   */
@@ -220,10 +213,6 @@ nav div.show {
   align-items: center;
 }
 .add-flex .stuffed-cherries {
-  background: url("/img/utc.jpg") no-repeat center center;
-  background-size: cover;
-  height: 330px;
-  width: 500px;
 }
 
 .center-h1 {
