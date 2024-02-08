@@ -126,6 +126,34 @@ LOCK TABLES `menus` WRITE;
 INSERT INTO `menus` VALUES (50,'Arroz con carne','Delicioso arroz con carne',1.50,'Disponible','',33),(51,'panes con queso','agua',1.75,'Disponible','10:14',32),(52,'pan con agua','nada',0.10,'No Disponible','12:03',32),(53,'helado','de agua',0.50,'No Disponible','01:02',33),(58,'helados','de miel de pan de helado',13.00,'No Disponible','12:03',32),(59,'hola','helado',12.00,'No Disponible','12:03',32),(60,'12','21',21.00,'Disponible','12:02',32),(61,'pan','queso',12.00,'Disponible','12:02',32),(62,'helados1','sad',12.00,'Disponible','12:12',32),(64,'queso','helado',12.00,'Disponible','12:03',32),(66,'jaja','123',12.00,'Disponible','12:03',32),(69,'veammos si funciona','jaja',12.00,'Disponible','23:12',32),(70,'pato ','paton con queso',1.25,'Disponible','09:10',32),(71,'helado de mora','123',1.20,'Disponible','01:01',32),(72,'pan','pan con agua',0.46,'No Disponible','12:02',34),(73,'agua','agua',1.00,'No Disponible','12:03',34);
 /*!40000 ALTER TABLE `menus` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `before_insert_menus` BEFORE INSERT ON `menus` FOR EACH ROW BEGIN
+    DECLARE count_plato INT;
+
+    -- Verificar si ya existe un registro con el mismo platoNom y fkid_res
+    SELECT COUNT(*) INTO count_plato
+    FROM Menus
+    WHERE platoNom = NEW.platoNom AND fkid_res = NEW.fkid_res;
+
+    -- Si ya existe, impedir la inserción
+    IF count_plato > 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'No se puede insertar, el platoNom ya existe para el mismo fkid_res.';
+    END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `miembros`
@@ -227,6 +255,188 @@ LOCK TABLES `usuarios` WRITE;
 INSERT INTO `usuarios` VALUES (1,'','',NULL,NULL),(2,'','',NULL,NULL),(3,'','',NULL,NULL),(4,'RestaurantName','Location',NULL,NULL),(5,'','',NULL,NULL),(6,'danny','danny@gmail.com',NULL,NULL),(7,'hola','danny@gmail.com',NULL,NULL),(8,'Eddy','eddysopalo85@gmail.com',NULL,NULL),(9,'yo','todos',NULL,NULL),(10,'bossun','bossun2602@gamilcom',NULL,NULL),(11,'todos','doos',NULL,NULL),(12,'jefaso','jefaso@gmail.com',NULL,NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'utcmenu'
+--
+
+--
+-- Dumping routines for database 'utcmenu'
+--
+/*!50003 DROP PROCEDURE IF EXISTS `InsertarComentario` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarComentario`(
+    IN descripcion VARCHAR(100),
+    IN fecha VARCHAR(100),
+    IN nombre_restaurante VARCHAR(255),
+    IN nombre_usuario VARCHAR(255)
+)
+BEGIN
+    -- Obtener id_res del restaurante
+    SET @idres = (SELECT id_res 
+                  FROM restaurantes
+                  WHERE nombre_res = nombre_restaurante);
+
+    -- Obtener id_usu del usuario
+    SET @idusu = (SELECT id_usu
+                  FROM usuarios
+                  WHERE id_usu = (SELECT fkid_usu FROM miembros WHERE id_mie = nombre_usuario));
+
+    -- Insertar comentario
+    INSERT INTO comentarios (desc_com, fecha_com, fkid_res, fkid_usu)
+    VALUES (descripcion, fecha, @idres, @idusu);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `InsertarMenu` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarMenu`(
+    IN p_nombrePlatillo VARCHAR(50),
+    IN p_descripcionPlatillo varchar(100),
+    IN p_precioPlatillo DECIMAL(4,2),
+    IN p_estadoPlatillo VARCHAR(50),
+    IN p_horaPlatillo VARCHAR(50),
+    IN p_idMiembro varchar(10)
+)
+BEGIN
+    DECLARE v_fkid_res INT;
+
+    -- Obtener el fkid_res de la tabla miembros usando el p_idMiembro proporcionado
+    SELECT fkid_res INTO v_fkid_res FROM miembros WHERE id_mie = p_idMiembro;
+
+    -- Insertar el nuevo menú en la tabla menus
+    INSERT INTO menus (platoNom, platodesc, platoprec, platoest,platohora, fkid_res)
+    VALUES (p_nombrePlatillo, p_descripcionPlatillo, p_precioPlatillo, p_estadoPlatillo,p_horaPlatillo , v_fkid_res);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `InsertClienteAndMember` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertClienteAndMember`(
+    IN cli_nombre VARCHAR(50),
+    IN cli_correo VARCHAR(100),
+    IN mie_nom VARCHAR(30),
+    IN mie_contra VARCHAR(50)
+)
+BEGIN
+    DECLARE last_inserted_id INT;
+
+    -- Insert into Restaurantes
+    INSERT INTO Usuarios(nom_usu, correo_usu)
+    VALUES (cli_nombre, cli_correo);
+
+    -- Get the last inserted id
+    SET last_inserted_id = LAST_INSERT_ID();
+
+    -- Format the id_mie with 'RE' prefix
+    SET @id_mie = CONCAT('USU', last_inserted_id);
+
+    -- Insert into Miembros with the generated id_mie
+    INSERT INTO Miembros(id_mie, nom_mie, contra_mie, fkid_usu)
+    VALUES (@id_mie, mie_nom, mie_contra, last_inserted_id);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `InsertRestaurantAndMember` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertRestaurantAndMember`(
+    IN p_nombre_res VARCHAR(50),
+    IN p_ubi_res VARCHAR(100),
+    IN p_desc_res VARCHAR(100),
+    IN p_hora_res VARCHAR(100),
+    IN p_imagen_res longblob,
+    IN p_nom_mie VARCHAR(30),
+    IN p_contra_mie VARCHAR(50)
+)
+BEGIN
+    DECLARE last_inserted_id INT;
+
+    -- Insert into Restaurantes
+    INSERT INTO Restaurantes(nombre_res, ubi_res, desc_res, hora_res,fkid_ad,imagen_res)
+    VALUES (p_nombre_res, p_ubi_res, p_desc_res, p_hora_res,'1',p_imagen_res);
+
+    -- Get the last inserted id
+    SET last_inserted_id = LAST_INSERT_ID();
+
+    -- Format the id_mie with 'RE' prefix
+    SET @id_mie = CONCAT('RE', last_inserted_id);
+
+    -- Insert into Miembros with the generated id_mie
+    INSERT INTO Miembros(id_mie, nom_mie, contra_mie, fkid_res)
+    VALUES (@id_mie, p_nom_mie, p_contra_mie, last_inserted_id);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `seleccionarMenu` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `seleccionarMenu`(
+    IN id varchar(10)
+)
+BEGIN
+    DECLARE v_fkid_res INT;
+
+    -- Obtener el fkid_res de la tabla miembros usando el p_idMiembro proporcionado
+    SELECT fkid_res INTO v_fkid_res FROM miembros WHERE id_mie = id;
+
+    select * from menus where fkid_res=v_fkid_res;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -237,4 +447,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-07 14:04:03
+-- Dump completed on 2024-02-07 19:02:31
